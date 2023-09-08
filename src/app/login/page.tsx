@@ -1,9 +1,16 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 export default function Login() {
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  function handleLogin() {
+    console.log(password, phoneNumber);
+  }
   return (
-    <section className="bg-gradient-to-b from-ungu to-dary relative h-screen">
+    <section className="bg-gradient-to-b from-ungu to-dary relative h-screen ">
       <div className="p-10 pt-10 hidden space-x-8 sm:flex">
         <Link href={"/"}>
           <svg
@@ -20,25 +27,44 @@ export default function Login() {
           </svg>
         </Link>
       </div>
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex justify-center gap-5 text-center w-full mb-12">
-          <div className="mt-2">
-            <Image width={500} height={81} src="/img/logo.png" alt="" />
+      <div className="flex justify-center sm:hidden">
+        <div className="mt-[50px]">
+          <div className="flex justify-center mt-5">
+            <Image width={250} height={114} src="/img/logo1.png" alt="" />
           </div>
-          <div>
-            <svg
-              width="4"
-              height="60"
-              viewBox="0 0 4 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M2 0V100" stroke="#FF9C99" stroke-width="3" />
-            </svg>
+          <div className="flex justify-center mt-[50px] ">
+            <h1 className="text-[32px] title-font text-white">
+              Selamat Datang
+            </h1>
           </div>
-          <h1 className="sm:text-5xl text-3xl font-normal title-font mt-2 text-white">
-            Login
-          </h1>
+          <div className="flex justify-center">
+            <h1 className="text-[32px] font-bold title-font text-white">
+              Hokkiers
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div className="container px-5 py-10 mx-auto">
+        <div className="hidden space-x-8 sm:flex">
+          <div className="flex justify-center gap-5 text-center w-full mb-12">
+            <div className="mt-2">
+              <Image width={500} height={81} src="/img/logo.png" alt="" />
+            </div>
+            <div>
+              <svg
+                width="4"
+                height="60"
+                viewBox="0 0 4 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M2 0V100" stroke="#FF9C99" stroke-width="3" />
+              </svg>
+            </div>
+            <h1 className="sm:text-5xl text-3xl font-normal title-font mt-2 text-white">
+              Login
+            </h1>
+          </div>
         </div>
         <div className="lg:w-1/2 md:w-2  mx-auto">
           <div className="flex flex-col pt-5 space-y-1">
@@ -47,10 +73,14 @@ export default function Login() {
                 <label className="leading-7 text-sm text-gray-600"></label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  id="text"
+                  name="text"
                   className="w-full bg-gray-100 bg-opacity-50 rounded-lg border border-gray-100 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Phone Number"
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -58,11 +88,15 @@ export default function Login() {
               <div className="relative">
                 <label className="leading-7 text-sm text-gray-600"></label>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
+                  type="text"
+                  id="text"
+                  name="text"
                   className="w-full bg-gray-100 bg-opacity-50 rounded-lg border border-gray-100 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -78,7 +112,9 @@ export default function Login() {
               </Link>
             </div>
             <div className="p-2 w-full">
-              <button className="flex mx-auto text-white bg-ungu border-0 py-2 px-8 focus:outline-none hover:bg-purple-900 rounded-lg text-lg">
+              <button
+              onClick={handleLogin}
+              className="flex mx-auto text-white bg-ungu border-0 py-2 px-8 focus:outline-none hover:bg-purple-900 rounded-lg text-lg">
                 Login
               </button>
             </div>

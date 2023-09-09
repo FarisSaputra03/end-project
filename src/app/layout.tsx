@@ -33,8 +33,7 @@ export default function RootLayout({
         {children}
         {pathname !== "/login" ? 
          pathname !== "/register" &&
-         pathname !== "/potrait" &&
-         pathname !== "/step" && (
+         pathname !== "/potrait" && (
           <Footer/>
         ) : (
           <></>

@@ -16,6 +16,8 @@ module.exports = {
         ning: "#F9E555",
         pri:"#E763FF",
         mary:"#450052",
+        bu:"#D9D9D9",
+        gr:"#454545"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

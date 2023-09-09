@@ -13,6 +13,8 @@ export default function Register() {
     if (password !== confirmPassword) {
       alert("Password tidak sama");
     }
+    else{alert ("Password sama");
+  }
   }
 
   return (

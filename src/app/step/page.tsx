@@ -5,19 +5,10 @@ import Image from "next/image";
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
 export default function Step() {
-  const [selectedCabang, setSelectedCabang] = useState<any>(null);
   const [selectedBox, setSelectedBox] = useState<any>(null);
   const [jumlahOrang, setJumlahOrang] = useState<number>(1);
-  const listView = [
-    {
-      img: "/img/garut1.jpg",
-      title: "FOTOHOKKIE GARUT 001",
-    },
-    {
-      img: "/img/garut2.jpg",
-      title: "Fotohokkie Garut",
-    },
-  ];
+  const [selectedJumlah, setSelectJumlah] = useState<any>(null);
+  const [selectedReservasi, setSelectedReservasi] = useState<any>(false);
   const listBox = [
     {
       img: "/img/familylg.png",
@@ -234,7 +225,7 @@ export default function Step() {
         </div>
       </div>
 
-      {selectedCabang == null ?
+      {selectedBox == null ? (
         <div className="flex justify-center">
           <div className="flex justify-center">
             <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -257,10 +248,11 @@ export default function Step() {
                         </button>
                         <div className="w-auto flex flex-col gap-2 justify-center">
                           <button
-                           onClick={() => {
-                            setSelectedCabang(data);
-                          }}
-                          className="flex justify-center text-white bg-ungu border-0 py-1 px-8 rounded-full text-xs">
+                            onClick={() => {
+                              setSelectedBox(data);
+                            }}
+                            className="flex justify-center text-white bg-ungu border-0 py-1 px-8 rounded-full text-xs"
+                          >
                             Pilih
                           </button>
                         </div>
@@ -272,71 +264,292 @@ export default function Step() {
             </div>
           </div>
         </div>
-        : null
-      }
+      ) : null}
 
-      {/* {
-         <section className="text-gray-600 body-font overflow-hidden">
-         <div className="container px-5 w-full py-24 mx-auto">
-           <div className="mx-auto flex flex-wrap">
-             <Image width={400} height={400} src="/img/siswalg.png" alt="" />
-             <div className="lg:w-1/2 w-full lg:pl-40 lg:py-6">
-               <h1 className="text-black flex justify-center w-full text-xl title-font mb-1">
-                 Jumlah hookiers yang akan di foto :
-               </h1>
-               <div className="flex w-full p-5 gap-3 justify-center">
-                 <div
-                   onClick={() => {
-                     if (jumlahOrang > 1) {
-                       setJumlahOrang(jumlahOrang - 1);
-                     }
-                   }}
+      {selectedBox !== null && selectedJumlah == null ? (
+        <section className="text-gray-600 body-font overflow-hidden">
+          <div className="container px-5 w-full py-24 mx-auto">
+            <div className="mx-auto flex flex-wrap">
+              <Image width={400} height={400} src="/img/siswalg.png" alt="" />
+              <div className="lg:w-1/2 w-full lg:pl-40 lg:py-6">
+                <h1 className="text-black flex justify-center w-full text-xl title-font mb-1">
+                  Jumlah hookiers yang akan di foto :
+                </h1>
+                <div className="flex w-full p-5 gap-3 justify-center">
+                  <div
+                    onClick={() => {
+                      if (jumlahOrang > 1) {
+                        setJumlahOrang(jumlahOrang - 1);
+                      }
+                    }}
+                  >
+                    <div style={{ color: "purple" }}>
+                      <AiFillMinusCircle size={40} />
+                    </div>
+                  </div>
+                  <div className="rounded-full bg-ungu p-3">
+                    <div className="flex gap-10">
+                      <p className="text-white text-sm">{jumlahOrang} Orang</p>
+                      <p className="text-white text-sm">
+                        IDR {jumlahOrang * 20000}{" "}
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => {
+                      setJumlahOrang(jumlahOrang + 1);
+                    }}
+                  >
+                    <div style={{ color: "purple" }}>
+                      <AiFillPlusCircle size={40} />
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full">
+                  <p className="text-merah text-sm">
+                    * UMUR 4 tahun kebawah tidak perlu di hitung (tidak dapat
+                    cetakan)
+                  </p>
+                  <p className="text-merah text-sm">
+                    ** Jika tetap ingin dapat cetakan, maka anak juga harus
+                    bayar
+                  </p>
+                </div>
+                <div>
+                  <button
+                    onClick={() => {
+                      setSelectJumlah(true);
+                    }}
+                    className="flex mx-auto mt-5 text-white bg-ungu border-0 py-2 px-8 focus:outline-none hover:bg-ungu rounded-full text-lg"
+                  >
+                    Lanjutkan
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {selectedJumlah !== null && selectedReservasi == false ?
+         <div className="flex justify-center">
+         <div className="w-full md:w-1/2">
+           <div className="flex p-5 justify-center mt-5">
+             <div className="flex justify-between w-full  rounded-lg bg-ungu">
+               <div className="py-3 p-3">
+                 <svg
+                   width="21"
+                   height="29"
+                   viewBox="0 0 21 29"
+                   fill="none"
+                   xmlns="http://www.w3.org/2000/svg"
                  >
-                   <div style={{ color: "purple" }}>
-                     <AiFillMinusCircle size={40} />
+                   <path
+                     d="M19.5 2L3 14.5L19.5 27"
+                     stroke="#F8F7F3"
+                     stroke-width="3"
+                     stroke-linecap="round"
+                   />
+                 </svg>
+               </div>
+               <h1 className="text-white flex py-2 text-3xl">September</h1>
+               <div className="py-3 p-3">
+                 <svg
+                   width="21"
+                   height="29"
+                   viewBox="0 0 21 29"
+                   fill="none"
+                   xmlns="http://www.w3.org/2000/svg"
+                 >
+                   <path
+                     d="M2 27L18.5 14.5L2 2"
+                     stroke="#F8F7F3"
+                     stroke-width="3"
+                     stroke-linecap="round"
+                   />
+                 </svg>
+               </div>
+             </div>
+           </div>
+           <div className="flex p-2 justify-center">
+             <div className=" py-4 p-5 w-auto rounded-lg bg-ungu">
+               <div className="grid grid-cols-4 md:grid-cols-7 gap-3">
+                 <div className="rounded-lg py-2 p-2 bg-white flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">3</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Rabu</p>
                    </div>
                  </div>
-                 <div className="rounded-full bg-ungu p-3">
-                   <div className="flex gap-10">
-                     <p className="text-white text-sm">{jumlahOrang} Orang</p>
-                     <p className="text-white text-sm">
-                       IDR {jumlahOrang * 20000}{" "}
-                     </p>
+                 <div className="rounded-lg py-2 p-2 bg-white flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">4</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Kamis</p>
                    </div>
                  </div>
-                 <div
-                   onClick={() => {
-                     setJumlahOrang(jumlahOrang + 1);
-                   }}
-                 >
-                   <div style={{ color: "purple" }}>
-                     <AiFillPlusCircle size={40} />
+                 <div className="rounded-lg py-2 p-2 bg-white flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">5</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Jumat</p>
+                   </div>
+                 </div>
+                 <div className="rounded-lg py-2 p-2 bg-white flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">6</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Sabtu</p>
+                   </div>
+                 </div>
+                 <div className="rounded-lg py-2 p-2 bg-white flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">7</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Minggu</p>
+                   </div>
+                 </div>
+                 <div className="rounded-lg py-2 p-2 bg-kuning flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">8</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Senin</p>
+                   </div>
+                 </div>
+                 <div className="rounded-lg py-2 p-2 bg-white flex flex-col">
+                   <div className="flex justify-center">
+                     <h1 className="font-bold text-black">9</h1>
+                   </div>
+                   <div className="flex justify-center">
+                     <p className="text-black">Selasa</p>
                    </div>
                  </div>
                </div>
-               <div className="w-full">
-                 <p className="text-merah text-sm">
-                   * UMUR 4 tahun kebawah tidak perlu di hitung (tidak dapat
-                   cetakan)
-                 </p>
-                 <p className="text-merah text-sm">
-                   ** Jika tetap ingin dapat cetakan, maka anak juga harus
-                   bayar
-                 </p>
+             </div>
+           </div>
+           <div className="flex p-1 justify-center">
+             <div className="flex  justify-between p-5 w-full gap-5 rounded-lg bg-ungu">
+               <div className="grid grid-cols-4 lg:grid-cols-6  gap-x-8 gap-y-4">
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 text-center bg-gray-700">
+                   <h1 className="text-white flex items-center justify-center w-full  text-base">10:00</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 bg-gray-700">
+                   <h1 className="text-white flex items-center justify-center w-full text-base">10:10</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 bg-gray-700">
+                   <h1 className="text-white flex items-center justify-center w-full text-base">10:20</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 bg-gray-700">
+                   <h1 className="text-white flex items-center justify-center w-full text-base">10:30</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 bg-gray-700">
+                   <h1 className="text-white flex items-center justify-center w-full text-base">10:40</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 bg-gray-700">
+                   <h1 className="text-white flex items-center justify-center w-full text-base">10:50</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:00</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-kuning">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:50</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8">
+                   <h1 className="text-black flex items-center justify-center w-full text-base"></h1>
+                 </div>
+                 <div className="rounded-full w-20  h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full w-20 h-8 sm:flex bg-white">
+                   <h1 className="text-black flex items-center justify-center w-full text-base">11:40</h1>
+                 </div>
+                 <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8  ">
+                   <h1 className="text-black flex items-center justify-center w-full text-base"></h1>
+                 </div>
                </div>
-               <div>
-                 <button
-                   className="flex mx-auto mt-5 text-white bg-ungu border-0 py-2 px-8 focus:outline-none hover:bg-ungu rounded-full text-lg"
-                 >
-                   Lanjutkan
-                 </button>
+             </div>
+           </div>
+           <div className="flex p-2 justify-center">
+             <button
+               className="flex justify-center py-3 p-3 w-full text-2xl rounded-lg text-white bg-ungu"
+             >
+               Konfirmasi
+             </button>
+           </div>
+           <div className="flex">
+             <p className="text-merah flex text-sm">
+               * Waktu booking tidak dapat melebihi 7 hari
+             </p>
+           </div>
+           <div className="flex p-2 ltr">
+             <div className="py-4 pe-20 w-auto gap-1 rounded-lg text-white bg-ungu">
+               <div className="justify-start">
+                 <div className="flex p-1 ">
+                   <Image width={25} height={25} src="/img/white.jpg" alt="" />
+                   <p>: Tersedia</p>
+                 </div>
+                 <div className="flex p-1 ">
+                   <Image
+                     width={25}
+                     height={25}
+                     src="/img/yellow.png"
+                     alt=""
+                   />
+                   <p>: Dipilih</p>
+                 </div>
+                 <div className="flex p-1 ">
+                   <Image width={25} height={25} src="/img/black.png" alt="" />
+                   <p>: Tidak dapat dipilih</p>
+                 </div>
                </div>
              </div>
            </div>
          </div>
-       </section>
-      } */}
-
+       </div>
+        : null
+      }
     </div>
   );
 }

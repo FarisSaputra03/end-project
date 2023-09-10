@@ -15,9 +15,6 @@ export default function Step() {
       waktu: "10:00",
     },
     {
-      waktu: "10:00",
-    },
-    {
       waktu: "10:10",
     },
     {
@@ -323,7 +320,12 @@ export default function Step() {
       {selectedBox !== null && selectedJumlah == null ? (
         <section className="text-gray-600 body-font overflow-hidden">
           <div className="container px-5 w-full py-24 mx-auto">
-            <div className="mx-auto flex flex-wrap">
+            <div className="mx-auto flex flex-wrap justify-center">
+              <div className="relative z-50 -right-52 mt-4">
+                <h1 className="rounded-t-lg bg-ungu text-white p-1 rounded-lg">
+                  Box 2 Sage - Pondok Indah
+                </h1>
+              </div>
               <Image width={400} height={400} src="/img/siswalg.png" alt="" />
               <div className="lg:w-1/2 w-full lg:pl-40 lg:py-6">
                 <h1 className="text-black flex justify-center w-full text-xl title-font mb-1">
@@ -389,7 +391,14 @@ export default function Step() {
         <div className="flex justify-center">
           <div className="w-full md:w-1/2">
             <div className="flex p-5 justify-center mt-5">
-              <div className="flex justify-between w-full  rounded-lg bg-ungu">
+              <div className="flex flex-col space-y-4 w-full ">
+                <div className="flex justify-center">
+                  <p className="text-ungu text-xl font-bold">Recent Book =</p>
+                  <p className="text-xl font-bold">
+                    BOX 2 Sage - Pondok Indah - 1 Orang
+                  </p>
+                </div>
+                <div className="flex justify-between  rounded-lg bg-ungu">
                 <div className="py-3 p-3"></div>
                 <h1 className="text-white flex py-2 text-3xl">September</h1>
                 <div className="py-3 p-3">
@@ -408,6 +417,7 @@ export default function Step() {
                     />
                   </svg>
                 </div>
+              </div>
               </div>
             </div>
             <div className="flex p-2 justify-center">
@@ -431,18 +441,17 @@ export default function Step() {
             </div>
             <div className="flex p-1 justify-center">
               <div className="flex  justify-between p-5 w-auto  gap-5 rounded-lg bg-ungu">
-                {listTime.map((data: any, index) => (
-                  <div
-                    key={index + 1}
-                    className="grid grid-cols-4 md:grid-cols-6"
-                  >
-                    <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 text-center bg-gray-700">
-                      <h1 className="text-white flex items-center justify-center w-full  text-base">
-                        {data.waktu}
-                      </h1>
+                <div className="grid grid-cols-4 md:grid-cols-6 gap-5">
+                  {listTime.map((data: any, index) => (
+                    <div className="" key={index + 1}>
+                      <div className="rounded-full hidden space-x-8 sm:flex w-20 h-8 text-center bg-gray-700">
+                        <h1 className="text-white flex items-center justify-center w-full  text-base">
+                          {data.waktu}
+                        </h1>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
             <div className="flex p-2 justify-center">
@@ -495,30 +504,45 @@ export default function Step() {
             </div>
             <div className="bg-ungu rounded-lg  mb-20 p-2">
               <div className="flex justify-center">
-                <h1 className="flex flex-col space-y-1 title-font p-1 text-2xl text-tertiary">
+                <h1 className="flex flex-col space-y-1 title-font p-1 text-[20px] text-tertiary">
                   Detail Pesanan
-                  <span className="inline-block h-1 w-44 rounded bg-tertiary mt-1 mb-4"></span>
+                  <span className="inline-block h-1 w-32 rounded bg-tertiary mt-1 mb-4"></span>
                 </h1>
               </div>
               <div className="flex gap-1">
-                <p className="mb-8 font-bold text-tertiary">BOX 2 Sage</p>
-                <p className="mb-8 font-bold text-white"> - Garut</p>
+                <p className="mb-8 text-[20px] font-bold text-tertiary">
+                  BOX 2 Sage
+                </p>
+                <p className="mb-8 text-[20px] font-bold text-white">
+                  {" "}
+                  - Garut
+                </p>
               </div>
               <div className="gap-1">
-                <p className="font-bold text-tertiary">
+                <p className="font-bold text-[20px] text-tertiary">
                   Senin, 8 September 2023
                 </p>
-                <p className="font-bold text-white">11:50 WIB</p>
+                <p className="font-bold text-[20px] text-white">11:50 WIB</p>
               </div>
               <div className="mt-3">
-                <p className="font-bold text-tertiary">
+                <p className="font-bold text-[20px] text-tertiary">
                   Senin, 8 September 2023
                 </p>
-                <p className="ml-3 text-white">- 5 Menit foto sepuasnya</p>
-                <p className="ml-3 text-white">- 1 Menit persiapan</p>
-                <p className="ml-3 text-white">- Free All Soft File</p>
-                <p className="ml-3 text-white">- Free 1 Cetakan/Orang</p>
-                <p className="ml-3 text-white">- Cetakan 4R 4R - Ultra Wide</p>
+                <p className="ml-3 text-[20px] text-white">
+                  - 5 Menit foto sepuasnya
+                </p>
+                <p className="ml-3 text-[20px] text-white">
+                  - 1 Menit persiapan
+                </p>
+                <p className="ml-3 text-[20px] text-white">
+                  - Free All Soft File
+                </p>
+                <p className="ml-3 text-[20px] text-white">
+                  - Free 1 Cetakan/Orang
+                </p>
+                <p className="ml-3 text-[20px] text-white">
+                  - Cetakan 4R 4R - Ultra Wide
+                </p>
               </div>
               <div className="flex justify-center gap-4">
                 <label className="block">
@@ -529,27 +553,27 @@ export default function Step() {
                     placeholder="Masukkan Kode Promo"
                   />
                 </label>
-                <button className="flex bg-tertiary border-0 py-2 px-8 focus:outline-none hover:bg-tertiary text-primary rounded-full text-lg">
+                <button className="flex bg-tertiary border-0 py-2 px-8 focus:outline-none hover:bg-tertiary text-primary rounded-full text-[20px]">
                   Claim
                 </button>
               </div>
               <div className="mt-5">
                 <div className="flex justify-between">
                   <div className="ml-2">
-                    <p className="text-white">Harga Box</p>
+                    <p className="text-white text-[20px]">Harga Box</p>
                   </div>
                   <div></div>
                   <div className="mr-2">
-                    <p className="text-white">IDR 20.000</p>
+                    <p className="text-white text-[20px]">IDR 20.000</p>
                   </div>
                 </div>
                 <div className="flex justify-between">
                   <div className="ml-1">
-                    <p className="text-white">Jumlah Orang</p>
+                    <p className="text-white text-[20px]">Jumlah Orang</p>
                   </div>
                   <div></div>
                   <div className="mr-2">
-                    <p className="text-white">1</p>
+                    <p className="text-white text-[20px]">1</p>
                   </div>
                 </div>
                 <span className=" inline-block h-1 w-full mr-2 rounded bg-white mt-1 mb-1"></span>
@@ -557,26 +581,26 @@ export default function Step() {
               <div className="">
                 <div className="flex justify-between">
                   <div className="ml-1">
-                    <p className="text-tertiary">Diskon</p>
+                    <p className="text-tertiary text-[20px]">Diskon</p>
                   </div>
                   <div></div>
                   <div className="mr-2">
-                    <p className="text-tertiary">0</p>
+                    <p className="text-tertiary text-[20px]">0</p>
                   </div>
                 </div>
                 <span className=" inline-block h-1 w-full mr-2 rounded bg-white mt-1 mb-1"></span>
                 <div className="flex justify-between">
                   <div className="ml-1">
-                    <p className="text-white">Total Pembayaran</p>
+                    <p className="text-white text-[20px]">Total Pembayaran</p>
                   </div>
                   <div></div>
                   <div className="mr-2">
-                    <p className="text-white">IDR 20.000</p>
+                    <p className="text-white text-[20px]">IDR 20.000</p>
                   </div>
                 </div>
               </div>
               <div className="flex mt-6 justify-center">
-                <button className="flex bg-tertiary border-0 py-2 px-8 focus:outline-none hover:bg-tertiary text-primary rounded-full text-lg">
+                <button className="flex bg-tertiary border-0 py-2 px-8 text-[20px] focus:outline-none hover:bg-tertiary text-primary rounded-full text-lg">
                   Lanjutkan Pembayaran
                 </button>
               </div>

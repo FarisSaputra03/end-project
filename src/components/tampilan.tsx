@@ -9,7 +9,7 @@ export default function Tampilan() {
         <div className=" h-auto">
           <Image width={1440} height={666} src="/img/awalan.png" alt="" />
         </div>
-        <div className="fixed bottom-5 z-10 right-14 left-14">
+        <div className="fixed bottom-5 z-10 right-14 drop-shadow-2xl left-14">
           <Link href={"/login"}>
             <button className="flex mx-auto text-white bg-ungu border-0 shadow-mary italic py-1 px-5 focus:outline-none rounded-full text-lg">
               Booking Sekarang

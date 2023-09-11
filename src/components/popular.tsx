@@ -1,12 +1,27 @@
 "use client"
 import React from "react";
 import Image from "next/image";
-import { Navigation, Pagination, Scrollbar,} from "swiper/modules";
+import { Navigation, Autoplay, Pagination, Scrollbar,} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 export default function Popular() {
   const listView = [
+    {
+      img: "/img/wide box.png",
+      title: "Ultra Wide Box",
+      price: "Start From IDR 15.000",
+    },
+    {
+      img: "/img/4box.png",
+      title: "Portrait 4 Box",
+      price: "Start From IDR 15.000",
+    },
+    {
+      img: "/img/big box.png",
+      title: "Big Box",
+      price: "Start From IDR 15.000",
+    },
     {
       img: "/img/wide box.png",
       title: "Ultra Wide Box",
@@ -64,10 +79,14 @@ export default function Popular() {
         {/* desktop */}
         <div className="hidden space-x-8 sm:flex">
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar]}
+            modules={[Navigation, Pagination, Autoplay, Scrollbar]}
             spaceBetween={50}
             slidesPerView={4}
             navigation
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             scrollbar={{ draggable: true }}
             className="-z-50"
           >
@@ -100,10 +119,14 @@ export default function Popular() {
         {/* mobile */}
         <div className="sm:hidden">
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar]}
+            modules={[Navigation, Pagination, Autoplay, Scrollbar]}
             spaceBetween={50}
             slidesPerView={3}
             navigation
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             scrollbar={{ draggable: true }}
             className="-z-50"
           >

@@ -13,6 +13,7 @@ export default function Step() {
   const [selectWaktu, setSelectedWaktu] = useState<string>("");
   const [selectHari, setSelectedHari] = useState<string>("");
   const [selectPindah, setSelectedPindah] = useState<number>(0);
+  const [selectNext, setSelectedNext] = useState<any>(null);
   const listTime = [
     {
       waktu: "10:00",
@@ -36,55 +37,73 @@ export default function Step() {
       waktu: "11:00",
     },
     {
-      waktu: "11:40",
+      waktu: "11:01",
     },
     {
-      waktu: "11:40",
+      waktu: "11:02",
     },
     {
-      waktu: "11:40",
+      waktu: "11:03",
     },
     {
-      waktu: "11:40",
+      waktu: "11:04",
     },
     {
-      waktu: "11:40",
+      waktu: "11:05",
     },
     {
-      waktu: "11:00",
+      waktu: "11:06",
     },
     {
-      waktu: "11:40",
+      waktu: "11:07",
     },
     {
-      waktu: "11:40",
+      waktu: "11:08",
     },
     {
-      waktu: "11:40",
+      waktu: "11:09",
     },
     {
-      waktu: "11:40",
+      waktu: "11:10",
     },
     {
-      waktu: "11:40",
+      waktu: "11:11",
     },
     {
-      waktu: "11:00",
+      waktu: "11:12",
     },
     {
-      waktu: "11:40",
+      waktu: "11:13",
     },
     {
-      waktu: "11:40",
+      waktu: "11:14",
     },
     {
-      waktu: "11:40",
+      waktu: "11:15",
     },
     {
-      waktu: "11:40",
+      waktu: "11:16",
     },
     {
-      waktu: "11:40",
+      waktu: "11:17",
+    },
+    {
+      waktu: "11:18",
+    },
+    {
+      waktu: "11:19",
+    },
+    {
+      waktu: "11:20",
+    },
+    {
+      waktu: "11:21",
+    },
+    {
+      waktu: "11:22",
+    },
+    {
+      waktu: "11:23",
     },
   ];
   const listDays = [
@@ -119,12 +138,12 @@ export default function Step() {
   ];
   const listBox = [
     {
-      img: "/img/familylg.png",
-      title: "BOX 1 Fire Wood",
-      info: "Square - Ultra Wide",
+      img: "/img/2.png",
+      title: "BOX 4 White",
+      info: "4R - Bobokkie",
     },
     {
-      img: "/img/familylg.png",
+      img: "/img/selfi.png",
       title: "BOX 1 Fire Wood",
       info: "Square - Ultra Wide",
     },
@@ -408,18 +427,18 @@ export default function Step() {
             {listBox.map((data: any, index) => (
               <div key={index + 1} className="p-5">
                 <div className="h-auto w-full border-2 group-hover:scale-110  card hover:shadow border-gray-200 border-opacity-60 rounded-lg">
-                  <div className="h-48 rounded w-full object-cover relative object-center">
+                  <div className="h-40 rounded w-full object-cover relative object-center">
                     <Image fill src={data.img} alt="" />
                   </div>
-                  <div className="p-4">
+                  <div className="p-5">
                     <h2 className="text-xs text-gray-900 font-bold text-left">
                       {data.title}
                     </h2>
-                    <div className="flex text-gray-500 text-xs text-left">
+                    <div className="flex text-gray-500 text-xs">
                       <p>{data.info}</p>
                     </div>
                     <div className="w-auto flex flex-col gap-2 mt-1 justify-center">
-                      <button className="flex justify-center text-ungu bg-white border-2 border-ungu py-1 px-5 rounded-full text-xs">
+                      <button className="flex justify-center text-gray-400 bg-white border-2 border-gray-400 py-1 px-5 rounded-full text-xs">
                         Lihat Cetakan
                       </button>
                       <div className="w-auto flex flex-col gap-2 justify-center">
@@ -447,9 +466,16 @@ export default function Step() {
           <div className="container px-5 w-full py-24 mx-auto">
             <div className="mx-auto flex flex-wrap justify-center">
               <div className="hidden space-x-8 sm:flex">
-                <div className="relative z-50 -right-52 mt-4 ">
+                <div className="relative z-50 -right-36 mt-4 ">
                   <h1 className="rounded-t-lg bg-ungu text-white p-1 rounded-lg">
-                    Box 2 Sage - Pondok Indah
+                  BOX 5 White Circle
+                  </h1>
+                </div>
+              </div>
+              <div className="flex mt-3 ml-20 sm:hidden">
+                <div className="relative z-50 right-36">
+                  <h1 className="rounded-t-lg bg-ungu text-white p-1 rounded-lg">
+                  BOX 5 White Circle
                   </h1>
                 </div>
               </div>
@@ -523,13 +549,13 @@ export default function Step() {
                 <div className="justify-center hidden space-x-8 sm:flex">
                   <p className="text-ungu text-xl font-bold">Recent Book =</p>
                   <p className="text-xl font-bold">
-                    BOX 2 Sage - Pondok Indah - 1 Orang
+                  BOX 5 White Circle - 1 Orang
                   </p>
                 </div>
                 <div className="flex justify-center mt-3 ml-5 sm:hidden">
                   <p className="text-ungu text-xs font-bold">Recent Book =</p>
                   <p className="text-xs font-bold">
-                    BOX 2 Sage - Pondok Indah - 1 Orang
+                  BOX 5 White Circle - 1 Orang
                   </p>
                 </div>
                 <div className="flex justify-between  rounded-lg bg-ungu">
@@ -653,7 +679,7 @@ export default function Step() {
         <div>
           <div className="container mx-auto w-full flex px-5 py-10 md:flex-row flex-col items-start">
             <div className="lg:w-auto w-full mb-10">
-              <Image width={650} height={900} src="/img/wakwaw.png" alt="" />
+              <Image width={650} height={900} src="/img/siswa.png" alt="" />
             </div>
             <div className="bg-ungu flex flex-col rounded-lg lg:w-1/2 w-full p-5 mb-10">
               <div className="flex justify-center">
@@ -664,19 +690,19 @@ export default function Step() {
               </div>
               <div className="flex gap-1">
                 <p className="mb-5 text-[15px] font-bold text-tertiary">
-                  BOX 2 Sage
+                BOX 5 White Circle
                 </p>
                 <p className="mb-5 text-[15px] font-bold text-white">- Garut</p>
               </div>
               <div className="gap-1">
                 <p className="font-bold text-[15px] text-tertiary">
-                  Senin, 8 September 2023
+                  Selasa, 9 September 2023
                 </p>
-                <p className="font-bold text-[15px] text-white">11:50 WIB</p>
+                <p className="font-bold text-[15px] text-white">11:03 WIB</p>
               </div>
               <div className="mt-3">
                 <p className="font-bold text-[15px] text-tertiary">
-                  Senin, 8 September 2023
+                Selasa, 9 September 2023
                 </p>
                 <p className="ml-3 text-[15px] text-white">
                   - 5 Menit foto sepuasnya

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AiFillMinusCircle } from "react-icons/ai";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { format, compareAsc, parse } from 'date-fns'
 export default function Step() {
   const [selectedBox, setSelectedBox] = useState<any>(null);
   const [jumlahOrang, setJumlahOrang] = useState<number>(1);
@@ -211,9 +212,9 @@ export default function Step() {
   };
   return (
     <div>
-      <div className="w-full py-5">
+      <div className="w-auto py-5 ml-2">
         <div className="flex justify-end lg:justify-center">
-          <div className="ml-10">
+          <div>
             {/* <div className="hidden space-x-8 sm:flex">
               <Link href={"/potrait"}>
                 <button>
@@ -252,7 +253,7 @@ export default function Step() {
                 </svg>
               </button>
             </div>
-            <div className="flex mt-3 ml-20 sm:hidden">
+            <div className=" mt-3 ml-3 sm:hidden">
               <button
                 onClick={() => {
                   kembali();
@@ -273,7 +274,7 @@ export default function Step() {
               </button>
             </div>
           </div>
-          <div className="w-1/6">
+          <div className="w-1/2">
             <div className="relative mb-2">
               <div className="w-10 h-10 mx-auto bg-ungu rounded-full text-lg text-white flex items-center">
                 <span className="text-center text-white w-full">1</span>
@@ -283,7 +284,7 @@ export default function Step() {
             <div className="text-xs text-center md:text-base">Pilih</div>
           </div>
 
-          <div className="w-1/6">
+          <div className="w-1/2">
             <div className="relative mb-2">
               <div
                 className="absolute flex align-center items-center align-middle content-center"
@@ -308,7 +309,7 @@ export default function Step() {
               >
                 <span
                   className={`text-center  w-full
-                ${selectPindah >= 1 ? "text-white" : ""}`}
+                ${selectPindah >= 1 ? "text-white" : "text-black"}`}
                 >
                   2
                 </span>
@@ -318,7 +319,7 @@ export default function Step() {
             <div className="text-xs text-center md:text-base">Jumlah Orang</div>
           </div>
 
-          <div className="w-1/6">
+          <div className="w-1/2">
             <div className="relative mb-2">
               <div
                 className="absolute flex align-center items-center align-middle content-center"
@@ -341,7 +342,7 @@ export default function Step() {
               >
                 <span
                   className={`text-center w-full
-                ${selectPindah >= 2 ? "text-white" : ""}`}
+                ${selectPindah >= 2 ? "text-white" : "text-black"}`}
                 >
                   3
                 </span>
@@ -353,7 +354,7 @@ export default function Step() {
             </div>
           </div>
 
-          <div className="w-1/6">
+          <div className="w-1/2">
             <div className="relative mb-2">
               <div
                 className="absolute flex align-center items-center align-middle content-center"
@@ -376,7 +377,7 @@ export default function Step() {
               >
                 <span
                   className={`text-center w-full
-                ${selectPindah >= 3 ? "text-white" : ""}`}
+                ${selectPindah >= 3 ? "text-white" : "text-black"}`}
                 >
                   4
                 </span>
@@ -388,7 +389,7 @@ export default function Step() {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="w-full md:w-auto flex">
+        <div className="mx-auto flex">
           <div className="relative">
             <div className="ml-10 hidden sm:flex">
               <div className="w-auto items-center">
@@ -410,8 +411,8 @@ export default function Step() {
                 </div>
               </div>
             </div>
-            <div className="ml-10 flex justify-center flex-col space-y-4 sm:hidden">
-              <div className="w-auto items-center">
+            <div className="flex justify-center flex-col space-y-4 sm:hidden">
+              <div className="">
                 <h1 className="text-white bg-ungu py-1 px-5 rounded-full text-xs">
                   PilihKota
                 </h1>
@@ -448,14 +449,14 @@ export default function Step() {
               </h1>
             </div>
           </div>
-          <div className="flex flex-col justify-center space-y-4 sm:hidden">
-            <div className="mr-5">
-              <h1 className="text-gr bg-bu py-1 px-5 font-bold rounded-full text-xs">
+          <div className="flex flex-col justify- space-y-4 sm:hidden">
+            <div className="">
+              <h1 className="text-gr bg-bu py-1 px-4 font-bold rounded-full text-xs">
                 Pilih Box
               </h1>
             </div>
-            <div className="mr-5">
-              <h1 className="text-gr flex bg-bu py-1 font-bold px-5 rounded-full text-xs">
+            <div className="">
+              <h1 className="text-gr flex bg-bu py-1 font-bold px-4 rounded-full text-xs">
                 Pilih Cabang
               </h1>
             </div>
@@ -467,7 +468,7 @@ export default function Step() {
         <div className="flex justify-center">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {listBox.map((data: any, index) => (
-              <div key={index + 1} className="p-5">
+              <div key={index + 1} className="p-4">
                 <div className="h-auto w-full border-2 group-hover:scale-110  card hover:shadow border-gray-200 border-opacity-60 rounded-lg">
                   <div className="h-40 rounded w-full object-cover relative object-center">
                     <Image fill src={data.img} alt="" />
@@ -620,6 +621,7 @@ export default function Step() {
                     </svg>
                   </div>
                 </div>
+              
               </div>
             </div>
             <div className="flex p-2 justify-center">
@@ -628,18 +630,20 @@ export default function Step() {
                   {listDays.map((data: any, index) => (
                     <div
                       onClick={() => {
-                        setSelectedHari(data.hari);
+                        setSelectedHari(data.date);
                       }}
                       key={index + 1}
                       className={`rounded-lg py-2 p-2 flex flex-col first-letter
                       ${
-                        selectHari == data.hari
+                        selectHari == data.date
                           ? "bg-kuning text-ungu"
                           : "bg-white text-black"
                       }`}
                     >
-                      <div className="flex justify-center">
-                        <h1 className="font-bold text-base text-center px-3">{data.hari}</h1>
+                      <div className="justify-center">
+                    
+                        <h1 className="font-bold text-base text-center px-3">  { format( Date.parse(data.date), "d")}</h1>
+                        <h1 className="font-bold text-base text-center px-3">  { format( Date.parse(data.date), "EE")}</h1>
                       </div>
                       {/* <div className="flex justify-center">
                         <p className=""></p>
@@ -738,7 +742,7 @@ export default function Step() {
               </div>
               <div className="gap-1">
                 <p className="font-bold text-[15px] text-tertiary">
-                  {`${selectHari}`}
+                { `${format(Date.parse(selectHari), "EEEE")}, ${format(Date.parse(selectHari), "dd MMMM yyyy")}`}
                 </p>
                 <p className="font-bold text-[15px] text-white">{`${selectWaktu}`} WIB</p>
               </div>

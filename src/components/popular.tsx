@@ -83,6 +83,7 @@ export default function Popular() {
             spaceBetween={50}
             slidesPerView={4}
             navigation
+            loop={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,

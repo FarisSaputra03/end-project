@@ -11,7 +11,7 @@ export default function Tampilan() {
         </div>
         <div className="fixed bottom-5 z-10 right-14 drop-shadow-2xl left-14">
           <Link href={"/login"}>
-            <button className="flex mx-auto text-white bg-ungu border-0 shadow-mary italic py-1 px-5 focus:outline-none rounded-full text-lg">
+            <button className="flex mx-auto drop-shadow-2xl shadow-indigo-500/40 text-white bg-ungu border-0 italic py-1 px-5 focus:outline-none rounded-full text-lg">
               Booking Sekarang
             </button>
           </Link>
